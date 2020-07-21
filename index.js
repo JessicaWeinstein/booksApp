@@ -29,6 +29,13 @@ let bookTitle = document.getElementById("bookTitle");
 let author = document.getElementById("author");
 let year = document.getElementById("year");
 let coverImage = document.getElementById("coverImage");
+let averageRating = document.getElementById("ratingNumber")
+
+let button = document.getElementById("reviewButton")
+    button.addEventListener("click", goToBookReviewURL);
+
+var infoLink = "";
+
 
 
 function searchBooksAPI(){
@@ -39,15 +46,31 @@ $.ajax({
         console.log(response);
         //process the JSON data etc
         displayFirstResult(response)
+        displayReviewButton()
+        setReviewLink(response)
+
     }
 })
+}
 
+function setReviewLink(data){
+    infoLink = data.items[0].volumeInfo.infoLink
 }
 
 function displayFirstResult(data){
     bookTitle.innerHTML = "Book Title: " + data.items[0].volumeInfo.title
     author.innerHTML = "Author: " + data.items[0].volumeInfo.authors[0]
     coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
+    averageRating.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating
 }
+
+function displayReviewButton(){
+    button.style.display = "block";
+}
+
+function goToBookReviewURL(){
+    window.location = infoLink + "&showAllReviews=true"
+}
+
 
 })

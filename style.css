@@ -3,3 +3,12 @@
     height:300px;
     background-size: 100% 100%;
   }
+
+  h2{
+  font-family: 'Open Sans', sans-serif;
+font-family: 'Roboto', sans-serif;
+}
+
+button{
+	display:none;
+}
