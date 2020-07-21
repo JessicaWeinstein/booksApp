@@ -1,11 +1,24 @@
 $(document).ready(function (){
 
 const proxyurl = "https://cors-anywhere.herokuapp.com/"; 
-//this was using goodReads but too hard to figure out the xml formatting, I couldn't find the results
+
+//________APIs we tried:
+//GoodReads api:
+//too hard to figure out the xml formatting, I couldn't find the results
 //const url = "https://www.goodreads.com/search/index.xml?key=YOUR_KEY&q=Normal+People";
-//google books api 
-//const url = "https://www.googleapis.com/books/v1/volumes?q=intitle:Normal+People+inauthor:Sally+Rooney"
+
+//Google Books api: 
+//shows cover art and has a url link to the book review:
+//get averageRating to write on the screen which will show #/5 stars then click on book to bring you to the book review url ex: https://play.google.com/store/books/details?id=kwBlDwAAQBAJ&source=gbs_api
+// const url = "https://www.googleapis.com/books/v1/volumes?q=intitle:Normal+People+inauthor:Sally+Rooney"
 const url = "https://www.googleapis.com/books/v1/volumes?q="
+
+// NY Times api - does not show book cover art/image:
+// const url = "https://api.nytimes.com/svc/books/v3/reviews.json?title="
+// const apiKey = "&api-key=TKPbCTXiG9BDGunZaZbmKE5TMnvQrB3f" //my api key
+
+//______________
+
 
 let searchInput = document.getElementById("searchInput");
 
@@ -20,7 +33,7 @@ let coverImage = document.getElementById("coverImage");
 
 function searchBooksAPI(){
 $.ajax({
-    url: proxyurl + url + searchInput.value,
+    url: proxyurl + url + searchInput.value, //+ apiKey for NYTimes
     //url: proxyurl + url,
     success: function(response){
         console.log(response);
