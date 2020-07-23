@@ -48,7 +48,7 @@ $.ajax({
         displayFirstResult(response)
         displayReviewButton()
         setReviewLink(response)
-
+        displayNextResults(response)
     }
 })
 }
@@ -72,5 +72,27 @@ function goToBookReviewURL(){
     window.location = infoLink + "&showAllReviews=true"
 }
 
+function displayNextResults(data) {
+    for(let i = 0; i < 10; i++) {
+        let titleResults = document.createElement("div");
+        titleResults.innerHTML = data.items[i].volumeInfo.title;
+        titleResults.style.padding = "2px";
+        titleResults.style.paddingTop = "15px";
+        nextResultsContainer.appendChild(titleResults);
+
+        let authorResults = document.createElement("div");
+        authorResults.innerHTML = data.items[i].volumeInfo.authors;
+        nextResultsContainer.appendChild(authorResults);
+
+        let smallThumb = document.createElement("div");
+        smallThumb.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')";
+        smallThumb.style.display = "block";
+        smallThumb.style.width = "130px";
+        smallThumb.style.height = "170px";
+        smallThumb.style.backgroundSize = "100% 100%";
+        smallThumb.style.backgroundRepeat = "no-repeat";
+        nextResultsContainer.appendChild(smallThumb);
+    }
+}
 
 })

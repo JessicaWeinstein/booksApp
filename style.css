@@ -12,3 +12,9 @@ font-family: 'Roboto', sans-serif;
 button{
 	display:none;
 }
+
+#nextResultsContainer {
+  margin-top: 25px;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
