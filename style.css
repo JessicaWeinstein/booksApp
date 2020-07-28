@@ -6,7 +6,7 @@
 
   h2{
   font-family: 'Open Sans', sans-serif;
-font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 button{
@@ -15,6 +15,11 @@ button{
 
 #nextResultsContainer {
   margin-top: 25px;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+#descriptionText{
   font-family: 'Open Sans', sans-serif;
   font-family: 'Roboto', sans-serif;
 }

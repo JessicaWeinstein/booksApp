@@ -30,6 +30,7 @@ let author = document.getElementById("author");
 let year = document.getElementById("year");
 let coverImage = document.getElementById("coverImage");
 let averageRating = document.getElementById("ratingNumber")
+let descripitionText = document.getElementById("descriptionText")
 
 let button = document.getElementById("reviewButton")
     button.addEventListener("click", goToBookReviewURL);
@@ -62,6 +63,7 @@ function displayFirstResult(data){
     author.innerHTML = "Author: " + data.items[0].volumeInfo.authors[0]
     coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
     averageRating.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating
+    descriptionText.innerHTML = "Description: " + data.items[0].volumeInfo.description
 }
 
 function displayReviewButton(){
@@ -73,7 +75,7 @@ function goToBookReviewURL(){
 }
 
 function displayNextResults(data) {
-    for(let i = 0; i < 10; i++) {
+    for(let i = 1; i < 10; i++) {
         let titleResults = document.createElement("div");
         titleResults.innerHTML = data.items[i].volumeInfo.title;
         titleResults.style.padding = "2px";
