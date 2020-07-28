@@ -31,6 +31,10 @@ let year = document.getElementById("year");
 let coverImage = document.getElementById("coverImage");
 let averageRating = document.getElementById("ratingNumber")
 let descripitionText = document.getElementById("descriptionText")
+let pageCount = document.getElementById("pageCount")
+let listPrice = document.getElementById("listPrice")
+
+
 
 let button = document.getElementById("reviewButton")
     button.addEventListener("click", goToBookReviewURL);
@@ -64,6 +68,10 @@ function displayFirstResult(data){
     coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
     averageRating.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating
     descriptionText.innerHTML = "Description: " + data.items[0].volumeInfo.description
+    pageCount.innerHTML = "Page Count: " + data.items[0].volumeInfo.pageCount
+    listPrice.innerHTML = "Price: $" + data.items[0].saleInfo.listPrice.amount
+
+
 }
 
 function displayReviewButton(){
