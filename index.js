@@ -26,7 +26,10 @@ let submit = document.getElementById("searchButton");
     submit.addEventListener("click", searchBooksAPI);
 
 let bookTitle = document.getElementById("bookTitle");
+
 let author = document.getElementById("author");
+author.addEventListener("click", moreByThisAuthor);
+
 let year = document.getElementById("year");
 let coverImage = document.getElementById("coverImage");
 let averageRating = document.getElementById("ratingNumber")
@@ -42,6 +45,9 @@ let buy = document.getElementById("buyButton")
 
 let button = document.getElementById("reviewButton")
     button.addEventListener("click", goToBookReviewURL);
+
+let buy = document.getElementById("buyButton")
+buy.addEventListener("click", buyThisBook);
 
 var infoLink = "";
 var url = "";
@@ -62,6 +68,7 @@ $.ajax({
         displayNextResults(response)
         displayBuyButton()
         setBuyLink(response)
+
     } 
 })
 }
@@ -99,7 +106,7 @@ function setBuyLink(data){
 
 function displayFirstResult(data){
     bookTitle.innerHTML = "Book Title: " + data.items[0].volumeInfo.title
-    author.innerHTML = "Author: " + data.items[0].volumeInfo.authors[0]
+    author.innerHTML = data.items[0].volumeInfo.authors[0];
     coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
     averageRating.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating
     descriptionText.innerHTML = "Description: " + data.items[0].volumeInfo.description
@@ -139,6 +146,7 @@ function displayNextResults(data) {
         let authorResults = document.createElement("div");
         authorResults.innerHTML = data.items[i].volumeInfo.authors;
         nextResultsContainer.appendChild(authorResults);
+        authorResults.addEventListener("click", moreByThisAuthor);
 
         let smallThumb = document.createElement("div");
         smallThumb.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')";
