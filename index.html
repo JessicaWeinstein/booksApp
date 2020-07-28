@@ -12,17 +12,25 @@
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 -->
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 	
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 	<script type= "text/javascript" src='index.js'></script> 
 </head>
 <body> 
-
-<input placeholder='Search author or book title...' type="text" id="searchInput">
+<select name ="searchOptions" id="dropDown">
+    <option value="all">All</option>
+    <option value="title">Title</option>
+    <option value="author">Author</option>
+    <option value="genre">Genre</option>
+  </select>
+<input placeholder= "Type Here..." type="text" id="searchInput">
 <input type="button" value="search" id="searchButton">
 
-	<div id="resultContainer">
+
+<div id="resultContainer">
 		<h2 id="bookTitle"></h2>
 		<h2 id="author"></h2>
 		<h2 id="ratingNumber"></h2>
@@ -31,7 +39,11 @@
 		<button id="buyButton">BUY THIS BOOK</button>
 	</br>
 		<div id="coverImage"></div>
-	</div>
+		<div id="listPrice"></div>
+		<div id="pageCount"></div>
+		<div id ="descriptionText"></div>
+</div>
+
 	<div id="nextResultsContainer"></div>
 
 
