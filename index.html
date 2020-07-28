@@ -20,9 +20,15 @@
 	<script type= "text/javascript" src='index.js'></script> 
 </head>
 <body> 
-
-<input placeholder='Search author or book title...' type="text" id="searchInput">
+<select name ="searchOptions" id="dropDown">
+    <option value="all">All</option>
+    <option value="title">Title</option>
+    <option value="author">Author</option>
+    <option value="genre">Genre</option>
+  </select>
+<input placeholder= "Type Here..." type="text" id="searchInput">
 <input type="button" value="search" id="searchButton">
+
 
 <div id="resultContainer">
 		<h2 id="bookTitle"></h2>
