@@ -34,6 +34,9 @@ let descripitionText = document.getElementById("descriptionText")
 let pageCount = document.getElementById("pageCount")
 let listPrice = document.getElementById("listPrice")
 let dropDown = document.getElementById("dropDown")
+let buy = document.getElementById("buyButton")
+    buy.addEventListener("click", buyThisBook);
+
 
 
 
@@ -57,6 +60,8 @@ $.ajax({
         displayReviewButton()
         setReviewLink(response)
         displayNextResults(response)
+        displayBuyButton()
+        setBuyLink(response)
     } 
 })
 }
@@ -88,6 +93,10 @@ function setReviewLink(data){
     infoLink = data.items[0].volumeInfo.infoLink
 }
 
+function setBuyLink(data){
+    buyLink = data.items[0].saleInfo.buyLink
+}
+
 function displayFirstResult(data){
     bookTitle.innerHTML = "Book Title: " + data.items[0].volumeInfo.title
     author.innerHTML = "Author: " + data.items[0].volumeInfo.authors[0]
@@ -111,6 +120,14 @@ function goToBookReviewURL(){
     window.location = infoLink + "&showAllReviews=true"
 }
 
+function displayBuyButton() {
+    buy.style.display = "block";
+}
+
+function buyThisBook () {
+    window.location = buyLink
+}
+
 function displayNextResults(data) {
     for(let i = 1; i < 10; i++) {
         let titleResults = document.createElement("div");
@@ -132,6 +149,27 @@ function displayNextResults(data) {
         smallThumb.style.backgroundRepeat = "no-repeat";
         nextResultsContainer.appendChild(smallThumb);
     }
+}
+
+function moreByThisAuthor() {
+    console.log("whatever")
+    //trigger a page refresh & new search
+    $.ajax({
+        url: proxyurl + "https://www.googleapis.com/books/v1/volumes?q=inauthor:" + author.innerHTML,
+        //url: proxyurl + url,
+        success: function(authorResponse){
+            console.log(authorResponse);
+            //process the JSON data etc
+            displayAuthorResult(authorResponse)
+        }
+    })
+}
+
+function displayAuthorResult(data) {
+    bookTitle.innerHTML = "Book Title: " + data.items[0].volumeInfo.title
+    author.innerHTML = "Author: " + data.items[0].volumeInfo.authors[0]
+    coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
+    averageRating.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating
 }
 
 })
