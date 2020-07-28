@@ -11,7 +11,7 @@ const proxyurl = "https://cors-anywhere.herokuapp.com/";
 //shows cover art and has a url link to the book review:
 //get averageRating to write on the screen which will show #/5 stars then click on book to bring you to the book review url ex: https://play.google.com/store/books/details?id=kwBlDwAAQBAJ&source=gbs_api
 // const url = "https://www.googleapis.com/books/v1/volumes?q=intitle:Normal+People+inauthor:Sally+Rooney"
-const url = "https://www.googleapis.com/books/v1/volumes?q="
+//const url = "https://www.googleapis.com/books/v1/volumes?q="
 
 // NY Times api - does not show book cover art/image:
 // const url = "https://api.nytimes.com/svc/books/v3/reviews.json?title="
@@ -33,6 +33,15 @@ author.addEventListener("click", moreByThisAuthor);
 let year = document.getElementById("year");
 let coverImage = document.getElementById("coverImage");
 let averageRating = document.getElementById("ratingNumber")
+let descripitionText = document.getElementById("descriptionText")
+let pageCount = document.getElementById("pageCount")
+let listPrice = document.getElementById("listPrice")
+let dropDown = document.getElementById("dropDown")
+let buy = document.getElementById("buyButton")
+    buy.addEventListener("click", buyThisBook);
+
+
+
 
 let button = document.getElementById("reviewButton")
     button.addEventListener("click", goToBookReviewURL);
@@ -41,12 +50,14 @@ let buy = document.getElementById("buyButton")
 buy.addEventListener("click", buyThisBook);
 
 var infoLink = "";
+var url = "";
 
 
 
 function searchBooksAPI(){
+     url = selectedDropdownOptionUrl();
 $.ajax({
-    url: proxyurl + url + searchInput.value, //+ apiKey for NYTimes
+     url: proxyurl + url + searchInput.value, //+ apiKey for NYTimes
     //url: proxyurl + url,
     success: function(response){
         console.log(response);
@@ -57,8 +68,35 @@ $.ajax({
         displayNextResults(response)
         displayBuyButton()
         setBuyLink(response)
+<<<<<<< HEAD
     }
+=======
+    } 
+>>>>>>> 817b9e060a44d44cb7387fe6edc9c5e9a3528ad2
 })
+}
+
+function selectedDropdownOptionUrl(){
+    let selectedValue = dropDown.value;
+    console.log(selectedValue);
+
+        if (selectedValue === "all"){
+            url = "https://www.googleapis.com/books/v1/volumes?q="
+        }
+        else if (selectedValue === "title"){
+            url = "https://www.googleapis.com/books/v1/volumes?q=intitle:"
+
+        }
+        else if (selectedValue === "author"){
+            url = "https://www.googleapis.com/books/v1/volumes?q=inauthor:"
+
+        }
+        else if (selectedValue === "genre"){
+            url = "https://www.googleapis.com/books/v1/volumes?q=subject:"
+
+        }
+
+        return url;
 }
 
 function setReviewLink(data){
@@ -74,6 +112,14 @@ function displayFirstResult(data){
     author.innerHTML = data.items[0].volumeInfo.authors[0];
     coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
     averageRating.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating
+    descriptionText.innerHTML = "Description: " + data.items[0].volumeInfo.description
+    pageCount.innerHTML = "Page Count: " + data.items[0].volumeInfo.pageCount
+        if (data.items[0].saleInfo.listPrice === undefined){
+            listPrice.innerHTML = "Sale price unavailable."
+        }
+        else{
+            listPrice.innerHTML = "Price: $" + data.items[0].saleInfo.listPrice.amount
+        }
 }
 
 function displayReviewButton(){

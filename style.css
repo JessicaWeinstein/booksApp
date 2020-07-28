@@ -6,7 +6,8 @@
 
   h2{
   font-family: 'Open Sans', sans-serif;
-font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
 }
 
 button{
@@ -17,4 +18,21 @@ button{
   margin-top: 25px;
   font-family: 'Open Sans', sans-serif;
   font-family: 'Roboto', sans-serif;
+}
+
+#descriptionText{
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+#pageCount{
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 700;
+}
+
+#listPrice{
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 700;
 }
