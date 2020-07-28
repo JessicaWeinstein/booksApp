@@ -26,13 +26,19 @@ let submit = document.getElementById("searchButton");
     submit.addEventListener("click", searchBooksAPI);
 
 let bookTitle = document.getElementById("bookTitle");
+
 let author = document.getElementById("author");
+author.addEventListener("click", moreByThisAuthor);
+
 let year = document.getElementById("year");
 let coverImage = document.getElementById("coverImage");
 let averageRating = document.getElementById("ratingNumber")
 
 let button = document.getElementById("reviewButton")
     button.addEventListener("click", goToBookReviewURL);
+
+let buy = document.getElementById("buyButton")
+buy.addEventListener("click", buyThisBook);
 
 var infoLink = "";
 
@@ -49,6 +55,8 @@ $.ajax({
         displayReviewButton()
         setReviewLink(response)
         displayNextResults(response)
+        displayBuyButton()
+        setBuyLink(response)
     }
 })
 }
@@ -57,9 +65,13 @@ function setReviewLink(data){
     infoLink = data.items[0].volumeInfo.infoLink
 }
 
+function setBuyLink(data){
+    buyLink = data.items[0].saleInfo.buyLink
+}
+
 function displayFirstResult(data){
     bookTitle.innerHTML = "Book Title: " + data.items[0].volumeInfo.title
-    author.innerHTML = "Author: " + data.items[0].volumeInfo.authors[0]
+    author.innerHTML = data.items[0].volumeInfo.authors[0];
     coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
     averageRating.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating
 }
@@ -72,8 +84,16 @@ function goToBookReviewURL(){
     window.location = infoLink + "&showAllReviews=true"
 }
 
+function displayBuyButton() {
+    buy.style.display = "block";
+}
+
+function buyThisBook () {
+    window.location = buyLink
+}
+
 function displayNextResults(data) {
-    for(let i = 0; i < 10; i++) {
+    for(let i = 1; i < 10; i++) {
         let titleResults = document.createElement("div");
         titleResults.innerHTML = data.items[i].volumeInfo.title;
         titleResults.style.padding = "2px";
@@ -83,6 +103,7 @@ function displayNextResults(data) {
         let authorResults = document.createElement("div");
         authorResults.innerHTML = data.items[i].volumeInfo.authors;
         nextResultsContainer.appendChild(authorResults);
+        authorResults.addEventListener("click", moreByThisAuthor);
 
         let smallThumb = document.createElement("div");
         smallThumb.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')";
@@ -93,6 +114,27 @@ function displayNextResults(data) {
         smallThumb.style.backgroundRepeat = "no-repeat";
         nextResultsContainer.appendChild(smallThumb);
     }
+}
+
+function moreByThisAuthor() {
+    console.log("whatever")
+    //trigger a page refresh & new search
+    $.ajax({
+        url: proxyurl + "https://www.googleapis.com/books/v1/volumes?q=inauthor:" + author.innerHTML,
+        //url: proxyurl + url,
+        success: function(authorResponse){
+            console.log(authorResponse);
+            //process the JSON data etc
+            displayAuthorResult(authorResponse)
+        }
+    })
+}
+
+function displayAuthorResult(data) {
+    bookTitle.innerHTML = "Book Title: " + data.items[0].volumeInfo.title
+    author.innerHTML = "Author: " + data.items[0].volumeInfo.authors[0]
+    coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
+    averageRating.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating
 }
 
 })
