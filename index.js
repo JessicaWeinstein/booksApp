@@ -46,7 +46,7 @@ let buy = document.getElementById("buyButton")
 let button = document.getElementById("reviewButton")
     button.addEventListener("click", goToBookReviewURL);
 
-let buy = document.getElementById("buyButton")
+buy = document.getElementById("buyButton")
 buy.addEventListener("click", buyThisBook);
 
 var infoLink = "";

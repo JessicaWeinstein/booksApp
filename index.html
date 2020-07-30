@@ -8,6 +8,9 @@
 
 	<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;1,200&display=swap" rel="stylesheet">
 
+<!-- serch icon library-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <!-- roboto font family 
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 -->
@@ -20,14 +23,17 @@
 	<script type= "text/javascript" src='index.js'></script> 
 </head>
 <body> 
-<select name ="searchOptions" id="dropDown">
-    <option value="all">All</option>
-    <option value="title">Title</option>
-    <option value="author">Author</option>
-    <option value="genre">Genre</option>
-  </select>
-<input placeholder= "Type Here..." type="text" id="searchInput">
-<input type="button" value="search" id="searchButton">
+<div id= "custom-select">
+	<select name ="searchOptions" id="dropDown">
+	    <option value="all">All</option>
+	    <option value="title">Title</option>
+	    <option value="author">Author</option>
+	    <option value="genre">Genre</option>
+	</select>
+	<input placeholder= "Search..." type="text" id="searchInput">
+	<button id="searchButton"><i class="fa fa-search"></i></button>
+</div>
+
 
 
 <div id="resultContainer">

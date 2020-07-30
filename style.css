@@ -9,9 +9,33 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
 }
+#custom-select{
+/* border:1px solid black;*/  
+height:50px;
 
-button{
+}
+
+#reviewButton{
 	display: none;
+}
+
+#buyButton{
+  display: none;
+}
+
+#searchButton{
+  border:none;
+  background-color:#ffffff;
+  opacity: 50%;
+}
+
+#searchButton:hover{
+  opacity: 100%;
+}
+
+#dropDown{
+  margin-left: 45%;
+  margin-top: 20px;
 }
 
 #nextResultsContainer {
@@ -36,3 +60,29 @@ button{
   font-family: 'Roboto', sans-serif; 
   font-weight: 700;
 }
+
+#searchInput{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #525252;
+  float:right;
+
+}
+
+input[type=text]{
+  position: relative;
+  padding: 18px 40px 0px 20px;
+  width: 40%;
+  color: #525252;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 2px;
+  border: none;
+  outline: none;
+  font-family: raleway;
+  font-weight:bold;
+}
+
+
