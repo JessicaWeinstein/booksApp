@@ -1,38 +1,68 @@
-#coverImage{
-    width:200px;
-    height:300px;
+#results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 20px;
+    padding: 10px;
+    border: 1px solid #000;
+}
+
+.grid {
+    border: 1px solid #000;
+    border-radius: 3px;
+    padding: 20px;
+    height: 300px;
+}
+
+#top {
+    grid-column: 1 / 2;
+}
+
+#cover {
+    display: block;
+    float: left;
+    width: 200px;
+    height: 300px;
     background-size: 100% 100%;
-  }
-
-  h2{
-  font-family: 'Open Sans', sans-serif;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 100;
 }
 
-button{
-	display: none;
+#info {
+    float: right;
 }
 
-#nextResultsContainer {
-  margin-top: 25px;
-  font-family: 'Open Sans', sans-serif;
-  font-family: 'Roboto', sans-serif;
+h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 18px;
 }
 
-#descriptionText{
-  font-family: 'Open Sans', sans-serif;
-  font-family: 'Roboto', sans-serif;
+button {
+    display: none;
 }
 
-#pageCount{
-  font-family: 'Open Sans', sans-serif;
-  font-family: 'Roboto', sans-serif; 
-  font-weight: 700;
+/* not accounted for yet --- */
+
+/* #description {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
-#listPrice{
-  font-family: 'Open Sans', sans-serif;
-  font-family: 'Roboto', sans-serif; 
-  font-weight: 700;
+#page {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif; 
+    font-weight: 700;
+}
+
+#price {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif; 
+    font-weight: 700;
+} */
+
+.next {
+    float: right;
+}
+
+.nextImage {
+    float: left;
 }
