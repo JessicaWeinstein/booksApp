@@ -19,6 +19,7 @@ const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 //______________
 
+var url = "https://www.googleapis.com/books/v1/volumes?q="
 
 let searchInput = document.getElementById("searchInput");
 
@@ -36,9 +37,11 @@ let averageRating = document.getElementById("ratingNumber")
 let descripitionText = document.getElementById("descriptionText")
 let pageCount = document.getElementById("pageCount")
 let listPrice = document.getElementById("listPrice")
-let dropDown = document.getElementById("dropDown")
+let dropDown = document.getElementsByClassName("dropDown-options")
+let dropDownOption = document.getElementsByClassName("dropDown-option")
 let buy = document.getElementById("buyButton")
     buy.addEventListener("click", buyThisBook);
+let selectedValue = "all";
 
 
 
@@ -50,14 +53,33 @@ buy = document.getElementById("buyButton")
 buy.addEventListener("click", buyThisBook);
 
 var infoLink = "";
-var url = "";
+
+//veiw drop down list function
+document.querySelector(".custom-select-wrapper").addEventListener("click", function() {
+    this.querySelector(".dropDown").classList.toggle("open");
+})
 
 
+for (const option of document.querySelectorAll(".dropDown-option")) { 
+    option.addEventListener("click", function() {
+        if (!this.classList.contains("selected")) {
+            this.parentNode.querySelector(".dropDown-option.selected").classList.remove("selected");
+            this.classList.add("selected");
+            this.closest(".dropDown").querySelector(".custom-select-trigger span").textContent = this.textContent;
+
+            var selectedValueText = this.textContent;
+            url = selectedDropdownOptionUrl(selectedValueText);
+            console.log(url);
+        }
+             // selectedValue =  this.closest(".dropDown").querySelector(".custom-select-trigger span").textContent = this.textContent;
+    })
+}
+//end of view dropdown list
 
 function searchBooksAPI(){
-     url = selectedDropdownOptionUrl();
+     // url = selectedDropdownOptionUrl();
 $.ajax({
-     url: proxyurl + url + searchInput.value, //+ apiKey for NYTimes
+     url: proxyurl + url + searchInput.value,
     //url: proxyurl + url,
     success: function(response){
         console.log(response);
@@ -73,22 +95,23 @@ $.ajax({
 })
 }
 
-function selectedDropdownOptionUrl(){
-    let selectedValue = dropDown.value;
-    console.log(selectedValue);
+function selectedDropdownOptionUrl(selectedValueText){
+    // let selectedValue = dropDownOption.value;
+    // console.log(selectedValue);
+    console.log(selectedValueText)
 
-        if (selectedValue === "all"){
+        if (selectedValueText === "All"){
             url = "https://www.googleapis.com/books/v1/volumes?q="
         }
-        else if (selectedValue === "title"){
+        else if (selectedValueText === "Title"){
             url = "https://www.googleapis.com/books/v1/volumes?q=intitle:"
 
         }
-        else if (selectedValue === "author"){
+        else if (selectedValueText === "Author"){
             url = "https://www.googleapis.com/books/v1/volumes?q=inauthor:"
 
         }
-        else if (selectedValue === "genre"){
+        else if (selectedValueText === "Genre"){
             url = "https://www.googleapis.com/books/v1/volumes?q=subject:"
 
         }

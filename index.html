@@ -19,20 +19,34 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 	
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
-	<script type= "text/javascript" src='index.js'></script> 
 </head>
 <body> 
-<div id= "custom-select">
+<div id= "searchArea">
+<!-- previous dropdown list code:
 	<select name ="searchOptions" id="dropDown">
 	    <option value="all">All</option>
 	    <option value="title">Title</option>
 	    <option value="author">Author</option>
 	    <option value="genre">Genre</option>
-	</select>
+	</select> -->
+	<div class="custom-select-wrapper">
+    <div class="dropDown">
+        <div class="custom-select-trigger"><span>All</span>
+            <div class="arrow"></div>
+        </div>
+        <div class="dropDown-options">
+            <span class="dropDown-option selected" value="all">All</span>
+            <span class="dropDown-option" value="title">Title</span>
+            <span class="dropDown-option" value="author">Author</span>
+            <span class="dropDown-option" value="genre">Genre</span>
+        </div>
+    </div>
+</div>
 	<input placeholder= "Search..." type="text" id="searchInput">
 	<button id="searchButton"><i class="fa fa-search"></i></button>
 </div>
+
+<!--updated search dropdown list code-->
 
 
 
@@ -52,6 +66,8 @@
 
 	<div id="nextResultsContainer"></div>
 
-
+	
+<!-- javascript tag-->
+<script type= "text/javascript" src='index.js'></script> 
 </body>
 </html>
