@@ -34,9 +34,9 @@ let button = document.getElementById("reviewButton")
 
 // buy = document.getElementById("buyButton")
 
-let cover = document.getElementById("cover");
-let rating = document.getElementById("rating")
-let descripition = document.getElementById("description")
+// let cover = document.getElementById("cover");
+// let rating = document.getElementById("rating")
+// let descripition = document.getElementById("description")
 // let page = document.getElementById("page")
 // 
 // let button = document.getElementById("review")
