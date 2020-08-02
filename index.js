@@ -1,25 +1,10 @@
-$(document).ready(function (){
+$(document).ready(function () {
 
 const proxyurl = "https://cors-anywhere.herokuapp.com/"; 
 
-//________APIs we tried:
-//GoodReads api:
-//too hard to figure out the xml formatting, I couldn't find the results
-//const url = "https://www.goodreads.com/search/index.xml?key=YOUR_KEY&q=Normal+People";
-
-//Google Books api: 
-//shows cover art and has a url link to the book review:
-//get averageRating to write on the screen which will show #/5 stars then click on book to bring you to the book review url ex: https://play.google.com/store/books/details?id=kwBlDwAAQBAJ&source=gbs_api
-// const url = "https://www.googleapis.com/books/v1/volumes?q=intitle:Normal+People+inauthor:Sally+Rooney"
-//const url = "https://www.googleapis.com/books/v1/volumes?q="
-
-// NY Times api - does not show book cover art/image:
-// const url = "https://api.nytimes.com/svc/books/v3/reviews.json?title="
-// const apiKey = "&api-key=TKPbCTXiG9BDGunZaZbmKE5TMnvQrB3f" //my api key
-
-//______________
-
+//when page loads it automatically uses the "all" url search
 var url = "https://www.googleapis.com/books/v1/volumes?q="
+
 
 let searchInput = document.getElementById("searchInput");
 
@@ -29,7 +14,7 @@ let submit = document.getElementById("searchButton");
 let bookTitle = document.getElementById("bookTitle");
 
 let author = document.getElementById("author");
-author.addEventListener("click", moreByThisAuthor);
+    author.addEventListener("click", moreByThisAuthor);
 
 let year = document.getElementById("year");
 let coverImage = document.getElementById("coverImage");
@@ -41,16 +26,23 @@ let dropDown = document.getElementsByClassName("dropDown-options")
 let dropDownOption = document.getElementsByClassName("dropDown-option")
 let buy = document.getElementById("buyButton")
     buy.addEventListener("click", buyThisBook);
+
 let selectedValue = "all";
-
-
-
 
 let button = document.getElementById("reviewButton")
     button.addEventListener("click", goToBookReviewURL);
 
-buy = document.getElementById("buyButton")
-buy.addEventListener("click", buyThisBook);
+// buy = document.getElementById("buyButton")
+
+let cover = document.getElementById("cover");
+let rating = document.getElementById("rating")
+let descripition = document.getElementById("description")
+let page = document.getElementById("page")
+let price = document.getElementById("price")
+// let button = document.getElementById("review")
+    button.addEventListener("click", goToBookReviewURL);
+
+// let buy = document.getElementById("buy")
 
 var infoLink = "";
 
@@ -90,9 +82,8 @@ $.ajax({
         displayNextResults(response)
         displayBuyButton()
         setBuyLink(response)
-
-    } 
-})
+        } 
+    })
 }
 
 function selectedDropdownOptionUrl(selectedValueText){
@@ -128,18 +119,18 @@ function setBuyLink(data){
 }
 
 function displayFirstResult(data){
-    bookTitle.innerHTML = "Book Title: " + data.items[0].volumeInfo.title
+    title.innerHTML = "Book Title: " + data.items[0].volumeInfo.title
     author.innerHTML = data.items[0].volumeInfo.authors[0];
-    coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
-    averageRating.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating
-    descriptionText.innerHTML = "Description: " + data.items[0].volumeInfo.description
-    pageCount.innerHTML = "Page Count: " + data.items[0].volumeInfo.pageCount
-        if (data.items[0].saleInfo.listPrice === undefined){
-            listPrice.innerHTML = "Sale price unavailable."
-        }
-        else{
-            listPrice.innerHTML = "Price: $" + data.items[0].saleInfo.listPrice.amount
-        }
+    cover.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
+    rating.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating
+    // description.innerHTML = "Description: " + data.items[0].volumeInfo.description
+    // page.innerHTML = "Page Count: " + data.items[0].volumeInfo.pageCount
+    //     if (data.items[0].saleInfo.listPrice === undefined){
+    //         price.innerHTML = "Sale price unavailable."
+    //     }
+    //     else{
+    //         price.innerHTML = "Price: $" + data.items[0].saleInfo.listPrice.amount
+    //     }
 }
 
 function displayReviewButton(){
@@ -160,25 +151,44 @@ function buyThisBook () {
 
 function displayNextResults(data) {
     for(let i = 1; i < 10; i++) {
+        let grid = document.createElement("div");
         let titleResults = document.createElement("div");
         titleResults.innerHTML = data.items[i].volumeInfo.title;
-        titleResults.style.padding = "2px";
-        titleResults.style.paddingTop = "15px";
-        nextResultsContainer.appendChild(titleResults);
-
+        titleResults.classList.add("next");
         let authorResults = document.createElement("div");
         authorResults.innerHTML = data.items[i].volumeInfo.authors;
-        nextResultsContainer.appendChild(authorResults);
-        authorResults.addEventListener("click", moreByThisAuthor);
-
+        authorResults.classList.add("next");
         let smallThumb = document.createElement("div");
+        smallThumb.classList.add("nextImage");
         smallThumb.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')";
         smallThumb.style.display = "block";
         smallThumb.style.width = "130px";
         smallThumb.style.height = "170px";
         smallThumb.style.backgroundSize = "100% 100%";
         smallThumb.style.backgroundRepeat = "no-repeat";
-        nextResultsContainer.appendChild(smallThumb);
+        grid.appendChild(smallThumb);
+        grid.appendChild(authorResults);
+        grid.appendChild(titleResults);
+        grid.classList.add("grid");
+        results.appendChild(grid);
+
+        // let authorResults = document.createElement("div");
+        // authorResults.innerHTML = data.items[i].volumeInfo.authors;
+        // box.appendChild(authorResults);
+        // authorResults.addEventListener("click", moreByThisAuthor);
+
+        // let smallThumb = document.createElement("div");
+        // smallThumb.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')";
+        // // smallThumb.style.display = "block";
+        // smallThumb.style.width = "130px";
+        // smallThumb.style.height = "170px";
+        // smallThumb.style.backgroundSize = "100% 100%";
+        // smallThumb.style.backgroundRepeat = "no-repeat";
+        // box.appendChild(smallThumb);
+
+
+        // let titleResults = data.items[i].volumeInfo.title;
+        // document.getElementsByClassName("box").innerHTML = titleResults;
     }
 }
 

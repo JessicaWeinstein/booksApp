@@ -20,36 +20,29 @@
 	
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
+
 <body> 
-<div id= "searchArea">
-<!-- previous dropdown list code:
-	<select name ="searchOptions" id="dropDown">
-	    <option value="all">All</option>
-	    <option value="title">Title</option>
-	    <option value="author">Author</option>
-	    <option value="genre">Genre</option>
-	</select> -->
-	<div class="custom-select-wrapper">
-    <div class="dropDown">
-        <div class="custom-select-trigger"><span>All</span>
-            <div class="arrow"></div>
-        </div>
-        <div class="dropDown-options">
-            <span class="dropDown-option selected" value="all">All</span>
-            <span class="dropDown-option" value="title">Title</span>
-            <span class="dropDown-option" value="author">Author</span>
-            <span class="dropDown-option" value="genre">Genre</span>
-        </div>
-    </div>
-</div>
-	<input placeholder= "Search..." type="text" id="searchInput">
-	<button id="searchButton"><i class="fa fa-search"></i></button>
-</div>
+<!-- search area-->
+	<div id= "searchArea">
+		<div class="custom-select-wrapper">
+	    <div class="dropDown">
+	        <div class="custom-select-trigger"><span>All</span>
+	            <div class="arrow"></div>
+	        </div>
+	        <div class="dropDown-options">
+	            <span class="dropDown-option selected" value="all">All</span>
+	            <span class="dropDown-option" value="title">Title</span>
+	            <span class="dropDown-option" value="author">Author</span>
+	            <span class="dropDown-option" value="genre">Genre</span>
+	        </div>
+	    </div>
+	</div>
+		<input placeholder= "Search..." type="text" id="searchInput">
+		<button id="searchButton"><i class="fa fa-search"></i></button>
+	</div>
+<!-- end of search area-->
 
-<!--updated search dropdown list code-->
-
-
-
+<!-- first result-->
 <div id="resultContainer">
 		<h2 id="bookTitle"></h2>
 		<h2 id="author"></h2>
@@ -63,10 +56,30 @@
 		<div id="pageCount"></div>
 		<div id ="descriptionText"></div>
 </div>
+<!-- end of first result-->
 
+<!-- remaining results-->
 	<div id="nextResultsContainer"></div>
 
-	
+<div id="wrapper">
+	<div id="results">
+		<div id="top" div class="grid">
+			<div id="info">
+				<h2 id="title"></h2>
+				<h2 id="author"></h2>
+				<h2 id="rating"></h2>
+				<button id="review">READ REVIEW</button>
+				<button id="buy">BUY THIS BOOK</button>
+			</div>
+			<div id="cover"></div>
+			<!-- <div id="price"></div>
+			<div id="page"></div>
+			<div id ="description"></div> -->
+		</div>
+	</div>
+</div>
+<!-- end remaining results-->
+
 <!-- javascript tag-->
 <script type= "text/javascript" src='index.js'></script> 
 </body>
