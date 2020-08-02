@@ -14,11 +14,11 @@ let submit = document.getElementById("searchButton");
 let bookTitle = document.getElementById("bookTitle");
 
 let author = document.getElementById("author");
-    author.addEventListener("click", moreByThisAuthor);
+//     author.addEventListener("click", moreByThisAuthor);
 
 let year = document.getElementById("year");
 let coverImage = document.getElementById("coverImage");
-let averageRating = document.getElementById("ratingNumber")
+let ratingNumber = document.getElementById("ratingNumber")
 let descripitionText = document.getElementById("descriptionText")
 let pageCount = document.getElementById("pageCount")
 let listPrice = document.getElementById("listPrice")
@@ -37,8 +37,8 @@ let button = document.getElementById("reviewButton")
 let cover = document.getElementById("cover");
 let rating = document.getElementById("rating")
 let descripition = document.getElementById("description")
-let page = document.getElementById("page")
-let price = document.getElementById("price")
+// let page = document.getElementById("page")
+// 
 // let button = document.getElementById("review")
     button.addEventListener("click", goToBookReviewURL);
 
@@ -119,18 +119,18 @@ function setBuyLink(data){
 }
 
 function displayFirstResult(data){
-    title.innerHTML = "Book Title: " + data.items[0].volumeInfo.title
+    bookTitle.innerHTML = "Book Title: " + data.items[0].volumeInfo.title
     author.innerHTML = data.items[0].volumeInfo.authors[0];
-    cover.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
-    rating.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating
-    // description.innerHTML = "Description: " + data.items[0].volumeInfo.description
-    // page.innerHTML = "Page Count: " + data.items[0].volumeInfo.pageCount
-    //     if (data.items[0].saleInfo.listPrice === undefined){
-    //         price.innerHTML = "Sale price unavailable."
-    //     }
-    //     else{
-    //         price.innerHTML = "Price: $" + data.items[0].saleInfo.listPrice.amount
-    //     }
+    coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
+    ratingNumber.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating + "/5 Stars"
+    descriptionText.innerHTML = "Description: " + data.items[0].volumeInfo.description
+    pageCount.innerHTML = "Page Count: " + data.items[0].volumeInfo.pageCount
+        if (data.items[0].saleInfo.listPrice === undefined){
+            listPrice.innerHTML = "Sale price unavailable."
+        }
+        else{
+            listPrice.innerHTML = "Price: $" + data.items[0].saleInfo.listPrice.amount
+        }
 }
 
 function displayReviewButton(){
@@ -192,6 +192,7 @@ function displayNextResults(data) {
     }
 }
 
+//when you click on author:
 function moreByThisAuthor() {
     console.log("whatever")
     //trigger a page refresh & new search
