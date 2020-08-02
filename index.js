@@ -153,11 +153,11 @@ function displayNextResults(data) {
     for(let i = 1; i < 10; i++) {
         let grid = document.createElement("div");
         let titleResults = document.createElement("div");
-        titleResults.innerHTML = data.items[i].volumeInfo.title;
+        titleResults.innerHTML = "Book Title: " + data.items[i].volumeInfo.title;
         titleResults.classList.add("next");
         let authorResults = document.createElement("div");
-        authorResults.innerHTML = data.items[i].volumeInfo.authors;
-        authorResults.classList.add("next");
+        authorResults.innerHTML = "Author: " + data.items[i].volumeInfo.authors;
+        authorResults.classList.add("next" );
         let smallThumb = document.createElement("div");
         smallThumb.classList.add("nextImage");
         smallThumb.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')";

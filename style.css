@@ -37,10 +37,50 @@
 
 #reviewButton{
 	display: none;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 18px;
+  width: 140px;
+  height: 40px;
+  margin-bottom: 10px;
+  background-color:#ffffff;
+  border: solid 2px #ecd0b6;
+  outline:none;
+}
+
+ #reviewButton:hover {
+     color: #ffffff;
+     background-color: #ecd0b6;
+}
+ #reviewButton:active {
+     color: #ffffff;
+     background-color: #ecd0b6;
 }
 
 #buyButton{
   display: none;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 18px;
+  width: 140px;
+  height: 40px;
+  margin-bottom: 10px;
+  /*border: none;
+  background-color:#f8efe7;*/
+  background-color:#ffffff;
+  border: solid 2px #ecd0b6;
+  outline:none;
+}
+
+ #buyButton:hover {
+     color: #ffffff;
+     background-color: #ecd0b6;
+}
+ #buyButton:active {
+     color: #ffffff;
+     background-color: #ecd0b6;
 }
 
 #searchButton{
@@ -74,6 +114,14 @@ h2 {
     font-weight: 100;
     font-size: 18px;
 }
+
+.next{
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 18px;
+}
+
 
 button{
     display: none;
