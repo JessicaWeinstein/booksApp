@@ -11,6 +11,7 @@ let searchInput = document.getElementById("searchInput");
 let submit = document.getElementById("searchButton");
     submit.addEventListener("click", searchBooksAPI);
 
+let pageHeader = document.getElementById("pageHeader");
 let bookTitle = document.getElementById("bookTitle");
 
 let author = document.getElementById("author");
@@ -119,11 +120,12 @@ function setBuyLink(data){
 }
 
 function displayFirstResult(data){
+    pageHeader.style.display = "block";
     bookTitle.innerHTML = "Book Title: " + data.items[0].volumeInfo.title
-    author.innerHTML = data.items[0].volumeInfo.authors[0];
+    author.innerHTML = "Author: " + data.items[0].volumeInfo.authors[0];
     coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
     ratingNumber.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating + "/5 Stars"
-    descriptionText.innerHTML = "Description: " + data.items[0].volumeInfo.description
+    descriptionText.innerHTML = data.items[0].volumeInfo.description
     pageCount.innerHTML = "Page Count: " + data.items[0].volumeInfo.pageCount
         if (data.items[0].saleInfo.listPrice === undefined){
             listPrice.innerHTML = "Sale price unavailable."
