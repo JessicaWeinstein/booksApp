@@ -12,6 +12,8 @@ let submit = document.getElementById("searchButton");
     submit.addEventListener("click", searchBooksAPI);
 
 let pageHeader = document.getElementById("pageHeader");
+let pageHeader2 = document.getElementById("pageHeader2");
+
 let bookTitle = document.getElementById("bookTitle");
 
 let author = document.getElementById("author");
@@ -121,6 +123,7 @@ function setBuyLink(data){
 
 function displayFirstResult(data){
     pageHeader.style.display = "block";
+    pageHeader2.style.display = "block";
     bookTitle.innerHTML = "Book Title: " + data.items[0].volumeInfo.title
     author.innerHTML = "Author: " + data.items[0].volumeInfo.authors[0];
     coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"

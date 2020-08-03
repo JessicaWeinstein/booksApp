@@ -5,37 +5,43 @@
 /*  border: solid 1px black;
 */}
 
-
-#results {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    grid-gap: 20px;
-/*    padding: 10px;
-*//*    border: 1px solid #000;*/
-     background-color: #f8efe7;
-
+#wrapper{
+  width:60%;
+  margin: -68px 0px 0px 30%;
 
 }
 
+#results {
+    display: grid;
+/*    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+*//*    grid-gap: 20px;
+*//*    padding: 10px;
+*//*    border: 1px solid #000;*/
+     background-color: #f8efe7;
+     grid-template-columns: 1fr 1fr 1fr;
+     width: 90%;
+}
+
 .grid {
-    border: 1px solid #000;
-    border-radius: 3px;
-    padding: 20px;
+/*    border: 1px solid #000;
+*/  padding: 20px;
     height: 300px;
+    width:235px;
 }
 
 #top {
     display: grid
     grid-column : 1fr;
+    height: auto;
 }
 
-/*#cover {
+#cover {
     display: block;
     float: left;
     width: 200px;
     height: 300px;
     background-size: 100% 100%;
-}*/
+}
 
 #coverImage {
     display: block;
@@ -58,13 +64,14 @@
 }*/
 
 #info {
-/*    float: left;
-*/    margin-left:30%;
-    position: absolute;
+  float: left;
+  margin-left:30%;
+  position: absolute;
 }
+
 #searchArea{
-/* border:1px solid black;  
-*/height:50px;
+/* border:1px solid black;*/
+height:50px;
   display: grid;
   grid-template-columns: auto auto auto;
 }
@@ -140,6 +147,10 @@
   margin-top: 25px;
   font-family: 'Open Sans', sans-serif;
   font-family: 'Roboto', sans-serif;
+  position: relative;
+  margin-top: 5%;
+  width:100%;
+  float:left;
 }
 
 h2 {
@@ -162,16 +173,32 @@ h2 {
     margin-left: 10%;
     position:absolute;
     padding:50px;
-
 }
+
+#pageHeader2 {
+    display:none;
+    font-family: 'Merriweather', serif;
+    font-weight: 900;
+    font-size: 35px;
+    width: 80%;
+    float:left;
+    margin-left:5%;
+    background-color: #ecd0b6;
+    margin-left: 10%;
+    padding:50px;
+    margin: 72px 0px -120px 10%;
+
+/*    position: absolute;
+*/}
 
 .next{
     font-family: 'Open Sans', sans-serif;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
     font-size: 18px;
-}
+    width: 100%;
 
+}
 
 button{
     display: none;
@@ -195,12 +222,6 @@ button{
     font-family: 'Roboto', sans-serif; 
     font-weight: 700;
 } */
-
-.next {
-    float: left;
-    margin-left:20px;
-    width: 55%;
-}
 
 #listPrice{
   font-family: 'Open Sans', sans-serif;
@@ -228,6 +249,10 @@ button{
 
 #descriptionText{
 width:85%;
+padding-top: 10px;
+/*border:solid 1px black;
+*/height: auto;
+
 }
 
 #searchInput{
@@ -366,7 +391,7 @@ input[type=text]{
 }
 /* end of drop down list styles*/
 
-.nextImage {
+/*.nextImage {
     float: left;
-}
+}*/
 
