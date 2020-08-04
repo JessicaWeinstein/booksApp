@@ -16,7 +16,7 @@ let pageHeader2 = document.getElementById("pageHeader2");
 
 let bookTitle = document.getElementById("bookTitle");
 
-let author = document.getElementById("author")
+let author = document.getElementById("author");
 
 let moreFrom = document.getElementById("moreFrom");
     moreFrom.addEventListener("click", moreByThisAuthor);
@@ -26,13 +26,18 @@ let results = document.getElementById("results");
 
 let year = document.getElementById("year");
 let coverImage = document.getElementById("coverImage");
-let ratingNumber = document.getElementById("ratingNumber")
+let ratingNumber = document.getElementById("ratingNumber");
+
 let descripitionText = document.getElementById("descriptionText")
-let pageCount = document.getElementById("pageCount")
-let listPrice = document.getElementById("listPrice")
-let dropDown = document.getElementsByClassName("dropDown-options")
-let dropDownOption = document.getElementsByClassName("dropDown-option")
-let buy = document.getElementById("buyButton")
+let fullDescriptionText = " "
+let moreDescriptionLink = document.getElementById("moreDescriptionLink");
+	moreDescriptionLink.addEventListener("click", expandDescriptionText);
+
+let pageCount = document.getElementById("pageCount");
+let listPrice = document.getElementById("listPrice");
+let dropDown = document.getElementsByClassName("dropDown-options");
+let dropDownOption = document.getElementsByClassName("dropDown-option");
+let buy = document.getElementById("buyButton");
     buy.addEventListener("click", buyThisBook);
 
 let selectedValue = "all";
@@ -118,12 +123,18 @@ function displayFirstResult(data){
     pageHeader.style.display = "block";
     pageHeader2.style.display = "block";
     wrapper.style.display = "block";
+    moreDescriptionLink.style.display = "block";
 	bookTitle.innerHTML = data.items[0].volumeInfo.title;
     author.innerHTML = " By: " + data.items[0].volumeInfo.authors[0];
     coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
     moreFrom.innerHTML = "View more from this author";
     ratingNumber.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating + "/5 Stars"
+    
     descriptionText.innerHTML = data.items[0].volumeInfo.description
+    fullDescriptionText = descriptionText.innerHTML
+    descriptionText.innerHTML = descriptionText.innerHTML.slice(0,300);
+
+
     pageCount.innerHTML = "Page Count: " + data.items[0].volumeInfo.pageCount
         if (data.items[0].saleInfo.listPrice === undefined){
             listPrice.innerHTML = "Sale price unavailable."
@@ -147,6 +158,12 @@ function displayBuyButton() {
 
 function buyThisBook () {
     window.location = buyLink
+}
+
+function expandDescriptionText(){
+	// fullDescriptionText.innerHTML = data.items[0].volumeInfo.description
+	descriptionText.innerHTML = fullDescriptionText
+	moreDescriptionLink.style.display = "none";
 }
 
 function displayNextResults(data) {
