@@ -19,25 +19,25 @@ background: linear-gradient(to bottom, #ffffff 0%, #F8EFE7 60%, #FFD7C0 100%);
 
 #results {
     display: grid;
-/*    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-*//*    grid-gap: 20px;
-*//*    padding: 10px;
-*//*    border: 1px solid #000;*/
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 20px;
+    padding: 10px;
+    border: 1px solid #000;
      background-color: #f8efe7;
      grid-template-columns: 1fr 1fr 1fr;
      width: 90%;
 }
 
 .grid {
-/*    border: 1px solid #000;
-*/  padding: 20px;
+    border: 1px solid #000;
+    padding: 20px;
     height: 300px;
     width:235px;
 }
 
 #top {
-    display: grid
-    grid-column : 1fr;
+    display: grid;
+    grid-column: 1fr;
     height: auto;
 }
 
@@ -213,25 +213,6 @@ button{
     display: none;
 }
 
-/* not accounted for yet --- */
-
-/* #description {
-    font-family: 'Open Sans', sans-serif;
-    font-family: 'Roboto', sans-serif;
-}
-
-#page {
-    font-family: 'Open Sans', sans-serif;
-    font-family: 'Roboto', sans-serif; 
-    font-weight: 700;
-}
-
-#price {
-    font-family: 'Open Sans', sans-serif;
-    font-family: 'Roboto', sans-serif; 
-    font-weight: 700;
-} */
-
 #listPrice{
   font-family: 'Open Sans', sans-serif;
   font-family: 'Roboto', sans-serif; 
@@ -244,7 +225,6 @@ button{
   font-weight: 100;
   font-size: 30px;
   margin-top:-9px;
-
 }
 
 #bookTitle{
@@ -253,7 +233,15 @@ button{
   font-weight: 100;
   font-size: 30px;
   margin-top:-15px;
+}
 
+#moreFrom {
+  font-size: 15px;
+  text-decoration: underline;
+}
+
+#moreFrom:hover {
+  text-decoration: none;
 }
 
 #descriptionText{

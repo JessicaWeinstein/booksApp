@@ -16,8 +16,13 @@ let pageHeader2 = document.getElementById("pageHeader2");
 
 let bookTitle = document.getElementById("bookTitle");
 
-let author = document.getElementById("author");
-    author.addEventListener("click", moreByThisAuthor);
+let author = document.getElementById("author")
+
+let moreFrom = document.getElementById("moreFrom");
+    moreFrom.addEventListener("click", moreByThisAuthor);
+
+let nextResultsContainer = document.getElementById("nextResultsContainer");
+let results = document.getElementById("results");
 
 let year = document.getElementById("year");
 let coverImage = document.getElementById("coverImage");
@@ -34,18 +39,6 @@ let selectedValue = "all";
 
 let button = document.getElementById("reviewButton")
     button.addEventListener("click", goToBookReviewURL);
-
-// buy = document.getElementById("buyButton")
-
-// let cover = document.getElementById("cover");
-// let rating = document.getElementById("rating")
-// let descripition = document.getElementById("description")
-// let page = document.getElementById("page")
-// 
-// let button = document.getElementById("review")
-    button.addEventListener("click", goToBookReviewURL);
-
-// let buy = document.getElementById("buy")
 
 var infoLink = "";
 
@@ -124,9 +117,10 @@ function setBuyLink(data){
 function displayFirstResult(data){
     pageHeader.style.display = "block";
     pageHeader2.style.display = "block";
-    bookTitle.innerHTML = "Book Title: " + data.items[0].volumeInfo.title
-    author.innerHTML = "Author: " + data.items[0].volumeInfo.authors[0];
+    bookTitle.innerHTML = data.items[0].volumeInfo.title;
+    author.innerHTML = data.items[0].volumeInfo.authors[0];
     coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
+    moreFrom.innerHTML = "more from this author";
     ratingNumber.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating + "/5 Stars"
     descriptionText.innerHTML = data.items[0].volumeInfo.description
     pageCount.innerHTML = "Page Count: " + data.items[0].volumeInfo.pageCount
@@ -176,47 +170,50 @@ function displayNextResults(data) {
         grid.appendChild(titleResults);
         grid.classList.add("grid");
         results.appendChild(grid);
-
-        // let authorResults = document.createElement("div");
-        authorResults.innerHTML = data.items[i].volumeInfo.authors;
-        // box.appendChild(authorResults);
-        authorResults.addEventListener("click", moreByThisAuthor);
-
-        // let smallThumb = document.createElement("div");
-        // smallThumb.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')";
-        // // smallThumb.style.display = "block";
-        // smallThumb.style.width = "130px";
-        // smallThumb.style.height = "170px";
-        // smallThumb.style.backgroundSize = "100% 100%";
-        // smallThumb.style.backgroundRepeat = "no-repeat";
-        // box.appendChild(smallThumb);
-
-
-        // let titleResults = data.items[i].volumeInfo.title;
-        // document.getElementsByClassName("box").innerHTML = titleResults;
     }
 }
 
-//when you click on author:
-function moreByThisAuthor() {
-    console.log("whatever")
-    //trigger a page refresh & new search
-    $.ajax({
-        url: proxyurl + "https://www.googleapis.com/books/v1/volumes?q=inauthor:" + author.innerHTML,
-        //url: proxyurl + url,
-        success: function(authorResponse){
-            console.log(authorResponse);
-            //process the JSON data etc
-            displayAuthorResult(authorResponse)
-        }
-    })
-}
+    function moreByThisAuthor() {
+        results.innerHTML = "";
+        //trigger a page refresh & new search
+        $.ajax({
+            url: proxyurl + "https://www.googleapis.com/books/v1/volumes?q=inauthor:" + author.innerHTML,
+            //url: proxyurl + url,
+            success: function(authorResponse){
+                console.log(authorResponse);
+                //process the JSON data etc
+                displayAuthorResult(authorResponse)
+            }
+        })
+    } //<--- moreByThisAuthor
 
-function displayAuthorResult(data) {
-    bookTitle.innerHTML = "Book Title: " + data.items[0].volumeInfo.title
-    author.innerHTML = "Author: " + data.items[0].volumeInfo.authors[0]
-    coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
-    averageRating.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating
-}
+    function displayAuthorResult(data) {
+        console.log("whatever")
+        for(let i = 1; i < 10; i++) {
+            let grid = document.createElement("div");
+            let titleResults = document.createElement("div");
+            titleResults.innerHTML = "Book Title: " + data.items[i].volumeInfo.title;
+            titleResults.classList.add("next");
+            let authorResults = document.createElement("div");
+            authorResults.innerHTML = "Author: " + data.items[i].volumeInfo.authors;
+            authorResults.classList.add("next" );
+            let smallThumb = document.createElement("div");
+            smallThumb.classList.add("nextImage");
+            smallThumb.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')";
+            smallThumb.style.display = "block";
+            smallThumb.style.width = "130px";
+            smallThumb.style.height = "170px";
+            smallThumb.style.backgroundSize = "100% 100%";
+            smallThumb.style.backgroundRepeat = "no-repeat";
+            grid.appendChild(smallThumb);
+            grid.appendChild(authorResults);
+            grid.appendChild(titleResults);
+            grid.classList.add("grid");
+            results.appendChild(grid);
+        }
+    }
+
+//when you click on author:
+
 
 })
