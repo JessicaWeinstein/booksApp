@@ -17,7 +17,7 @@ let pageHeader2 = document.getElementById("pageHeader2");
 let bookTitle = document.getElementById("bookTitle");
 
 let author = document.getElementById("author");
-//     author.addEventListener("click", moreByThisAuthor);
+    author.addEventListener("click", moreByThisAuthor);
 
 let year = document.getElementById("year");
 let coverImage = document.getElementById("coverImage");
@@ -178,9 +178,9 @@ function displayNextResults(data) {
         results.appendChild(grid);
 
         // let authorResults = document.createElement("div");
-        // authorResults.innerHTML = data.items[i].volumeInfo.authors;
+        authorResults.innerHTML = data.items[i].volumeInfo.authors;
         // box.appendChild(authorResults);
-        // authorResults.addEventListener("click", moreByThisAuthor);
+        authorResults.addEventListener("click", moreByThisAuthor);
 
         // let smallThumb = document.createElement("div");
         // smallThumb.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')";
