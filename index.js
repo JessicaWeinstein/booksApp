@@ -117,10 +117,11 @@ function setBuyLink(data){
 function displayFirstResult(data){
     pageHeader.style.display = "block";
     pageHeader2.style.display = "block";
-    bookTitle.innerHTML = data.items[0].volumeInfo.title;
-    author.innerHTML = data.items[0].volumeInfo.authors[0];
+    wrapper.style.display = "block";
+	bookTitle.innerHTML = data.items[0].volumeInfo.title;
+    author.innerHTML = " By: " + data.items[0].volumeInfo.authors[0];
     coverImage.style.backgroundImage = "url('" + data.items[0].volumeInfo.imageLinks.thumbnail + "')"
-    moreFrom.innerHTML = "more from this author";
+    moreFrom.innerHTML = "View more from this author";
     ratingNumber.innerHTML= "Rating: " + data.items[0].volumeInfo.averageRating + "/5 Stars"
     descriptionText.innerHTML = data.items[0].volumeInfo.description
     pageCount.innerHTML = "Page Count: " + data.items[0].volumeInfo.pageCount

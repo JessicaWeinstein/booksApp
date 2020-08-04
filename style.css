@@ -12,6 +12,7 @@ background: linear-gradient(to bottom, #ffffff 0%, #F8EFE7 60%, #FFD7C0 100%);
 */}
 
 #wrapper{
+  display:none;
   width:60%;
   margin: -68px 0px 0px 30%;
 
@@ -52,8 +53,8 @@ background: linear-gradient(to bottom, #ffffff 0%, #F8EFE7 60%, #FFD7C0 100%);
 #coverImage {
     display: block;
     float: left;
-    width: 200px;
-    height: 300px;
+    width: 250px;
+    height: 350px;
     background-size: 100% 100%;
     margin-right:40px;
     margin-top: -3px;
@@ -96,11 +97,13 @@ background: linear-gradient(to bottom, #ffffff 0%, #F8EFE7 60%, #FFD7C0 100%);
   background-color:#ffffff;
   border: solid 2px #ecd0b6;
   outline:none;
+  cursor: pointer;
 }
 
  #reviewButton:hover {
      color: #ffffff;
      background-color: #ecd0b6;
+     cursor: pointer;
 }
  #reviewButton:active {
      color: #ffffff;
@@ -121,11 +124,13 @@ background: linear-gradient(to bottom, #ffffff 0%, #F8EFE7 60%, #FFD7C0 100%);
   background-color:#ffffff;
   border: solid 2px #ecd0b6;
   outline:none;
+  cursor: pointer;
 }
 
  #buyButton:hover {
      color: #ffffff;
      background-color: #ecd0b6;
+     cursor: pointer;
 }
  #buyButton:active {
      color: #ffffff;
@@ -140,6 +145,7 @@ background: linear-gradient(to bottom, #ffffff 0%, #F8EFE7 60%, #FFD7C0 100%);
   width:40px;
   margin-top:23px;
   outline:none;
+  cursor: pointer;
 }
 
 #searchButton:hover{
@@ -223,25 +229,31 @@ button{
   font-family: 'Open Sans', sans-serif;
   font-family: 'Roboto', sans-serif; 
   font-weight: 100;
-  font-size: 30px;
+  font-size: 25px;
   margin-top:-9px;
+  padding-bottom: 15px;
 }
 
 #bookTitle{
   font-family: 'Open Sans', sans-serif;
   font-family: 'Roboto', sans-serif; 
-  font-weight: 100;
+  font-weight: 300;
   font-size: 30px;
-  margin-top:-15px;
+  margin-top:-10px;
 }
 
 #moreFrom {
-  font-size: 15px;
-  text-decoration: underline;
+  font-size: 18px;
+/*  text-decoration: underline;*/  
+	cursor: pointer;
+	font-weight: 400;
+	color: #c89f79;
 }
 
+
 #moreFrom:hover {
-  text-decoration: none;
+/*  text-decoration: none;*/
+color: #ab7e7e;
 }
 
 #descriptionText{
@@ -249,6 +261,8 @@ width:85%;
 padding-top: 10px;
 /*border:solid 1px black;
 */height: auto;
+  font-weight: 300;
+
 
 }
 
