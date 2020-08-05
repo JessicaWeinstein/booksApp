@@ -121,6 +121,7 @@ function setBuyLink(data){
 }
 
 function displayFirstResult(data){
+    results.innerHTML = "";
     pageHeader.style.display = "block";
     pageHeader2.style.display = "block";
     wrapper.style.display = "block";
@@ -168,6 +169,7 @@ function expandDescriptionText(){
 }
 
 function displayNextResults(data) {
+    results.innerHTML = "";
     for(let i = 1; i < 10; i++) {
         let grid = document.createElement("div");
         let titleResults = document.createElement("div");
