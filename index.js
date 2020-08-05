@@ -72,8 +72,9 @@ for (const option of document.querySelectorAll(".dropDown-option")) {
 function searchBooksAPI(){
      // url = selectedDropdownOptionUrl();
 $.ajax({
-     url: proxyurl + url + searchInput.value,
-    //url: proxyurl + url,
+      // use this url to bypass the cors error: 
+      // url: proxyurl + url + searchInput.value,
+    url: url + searchInput.value,
     success: function(response){
         console.log(response);
         //process the JSON data etc

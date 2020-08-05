@@ -386,3 +386,99 @@ input[type=text]{
 /* end of drop down list styles*/
 
 /*************************START OF MEDIA QUERY**************************/
+
+@media screen and (max-width: 932px){
+
+/* start of first result styling*/
+#searchArea{
+  margin:0px;
+  grid-template-columns: 1fr 3.5fr .5fr;
+}
+
+.custom-select-wrapper{
+  width:117px;
+}
+
+#pageHeader{
+  padding:30px;
+  width:100%;
+  margin-left:0px;
+  text-align: center
+}
+
+#info{
+  margin-top:-46px;
+  margin-left:0px;
+}
+
+#coverImage{
+  margin-top:70px;
+  float:none;
+  margin: 0px auto;
+}
+
+#bookTitle{
+  margin-top: 10px;
+  margin-left: 25%;
+}
+
+#author{
+  margin-left: 25%;
+  margin-bottom: 0px;
+}
+
+#moreFrom{
+  margin-left: 25%;
+  margin-top: 0px;
+
+}
+
+#ratingNumber{
+   margin-left: 25%;
+}
+
+#pageCount{
+   margin-left: 25%;
+}
+
+#listPrice{
+   margin-left: 25%;
+}
+
+#buyButton{
+   margin-left: 25%;
+   margin-bottom:0px;
+}
+
+#reviewButton{
+   margin-top: -40px;
+   margin-left:56%;
+}
+
+#descriptionText{
+  width:90%;
+  margin:0px auto;
+  padding-top:0px;
+}
+/*end of first result styling*/
+
+/*start of more results styling*/
+
+#pageHeader2{
+  padding:30px;
+  width:100%;
+  margin-left:0px;
+  text-align: center
+}
+
+#wrapper{
+  width:100%;
+  margin:-25% 5% 0% 4%;
+}
+#results{
+  margin-top:90px;
+
+}
+
+
+/* ***********************MEDIA QUERY ENDS HERE************************/
