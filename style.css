@@ -22,6 +22,7 @@ background: linear-gradient(to bottom, #ffffff 0%, #F8EFE7 60%, #FFD7C0 100%);
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   background-color: #f8efe7;
   width: 92%;
+  cursor: pointer;
 }
 
 .grid {
@@ -142,7 +143,6 @@ background: linear-gradient(to bottom, #ffffff 0%, #F8EFE7 60%, #FFD7C0 100%);
   font-family: 'Open Sans', sans-serif;
   font-family: 'Roboto', sans-serif;
   width:100%;
-
 }
 
 h2 {
@@ -191,6 +191,10 @@ p{
     font-size: 18px;
     width: 100%;
     padding-top:10px;
+}
+
+.titleResults {
+  font-weight: 300;
 }
 
 button{
@@ -248,8 +252,6 @@ button{
   padding-top: 10px;
   height: auto;
   font-weight: 300;
-
-
 }
 
 #searchInput{
