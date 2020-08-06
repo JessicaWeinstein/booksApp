@@ -178,15 +178,11 @@ p{
     font-weight: 900;
     font-size: 35px;
     width: 78%;
-/*    float:left;
-*/    margin-left:5%;
+    margin-left:5%;
     background-color: #ecd0b6;
     margin-left: 10%;
     padding:50px;
-/*    margin: 72px 0px -120px 10%;
-*/
-/*    position: absolute;
-*/}
+}
 
 .next{
     font-family: 'Open Sans', sans-serif;
@@ -195,7 +191,6 @@ p{
     font-size: 18px;
     width: 100%;
     padding-top:10px;
-
 }
 
 button{
@@ -211,7 +206,7 @@ button{
 #author{
   font-family: 'Open Sans', sans-serif;
   font-family: 'Roboto', sans-serif; 
-  font-weight: 100;
+  font-weight: 250;
   font-size: 25px;
   margin-top:-9px;
   padding-bottom: 15px;
