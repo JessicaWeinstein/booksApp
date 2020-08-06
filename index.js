@@ -163,7 +163,6 @@ function buyThisBook () {
 }
 
 function expandDescriptionText(){
-	// fullDescriptionText.innerHTML = data.items[0].volumeInfo.description
 	descriptionText.innerHTML = fullDescriptionText
 	moreDescriptionLink.style.display = "none";
 }
@@ -174,10 +173,11 @@ function displayNextResults(data) {
         let grid = document.createElement("div");
         let titleResults = document.createElement("div");
         titleResults.innerHTML = data.items[i].volumeInfo.title;
+        titleResults.classList.add("titleResults");
         titleResults.classList.add("next");
         titleResults.addEventListener("click", function(){
             bookTitle.innerHTML = data.items[i].volumeInfo.title;
-            author.innerHTML = " By: " + data.items[i].volumeInfo.authors[i];
+            author.innerHTML = " By: " + data.items[i].volumeInfo.authors;
             coverImage.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')"
             moreFrom.innerHTML = "View more from this author";
             ratingNumber.innerHTML= "Rating: " + data.items[i].volumeInfo.averageRating + "/5 Stars"
@@ -194,13 +194,16 @@ function displayNextResults(data) {
             else{
                 listPrice.innerHTML = "Price: $" + data.items[i].saleInfo.listPrice.amount
             }
+
+            buyLink = data.items[i].saleInfo.buyLink
+            infoLink = data.items[i].volumeInfo.infoLink
             })
         let authorResults = document.createElement("div");
         authorResults.innerHTML = data.items[i].volumeInfo.authors;
         authorResults.classList.add("next");
         authorResults.addEventListener("click", function(){
             bookTitle.innerHTML = data.items[i].volumeInfo.title;
-            author.innerHTML = " By: " + data.items[i].volumeInfo.authors[i];
+            author.innerHTML = " By: " + data.items[i].volumeInfo.authors;
             coverImage.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')"
             moreFrom.innerHTML = "View more from this author";
             ratingNumber.innerHTML= "Rating: " + data.items[i].volumeInfo.averageRating + "/5 Stars"
@@ -217,6 +220,9 @@ function displayNextResults(data) {
             else{
                 listPrice.innerHTML = "Price: $" + data.items[i].saleInfo.listPrice.amount
             }
+
+            buyLink = data.items[i].saleInfo.buyLink
+            infoLink = data.items[i].volumeInfo.infoLink
         })
         let smallThumb = document.createElement("div");
         smallThumb.classList.add("nextImage");
@@ -228,7 +234,7 @@ function displayNextResults(data) {
         smallThumb.style.backgroundRepeat = "no-repeat";
         smallThumb.addEventListener("click", function(){
             bookTitle.innerHTML = data.items[i].volumeInfo.title;
-            author.innerHTML = " By: " + data.items[i].volumeInfo.authors[i];
+            author.innerHTML = " By: " + data.items[i].volumeInfo.authors;
             coverImage.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')"
             moreFrom.innerHTML = "View more from this author";
             ratingNumber.innerHTML= "Rating: " + data.items[i].volumeInfo.averageRating + "/5 Stars"
@@ -245,14 +251,17 @@ function displayNextResults(data) {
             else{
                 listPrice.innerHTML = "Price: $" + data.items[i].saleInfo.listPrice.amount
             }
+
+            buyLink = data.items[i].saleInfo.buyLink
+            infoLink = data.items[i].volumeInfo.infoLink
         })
         grid.appendChild(smallThumb);
-        grid.appendChild(authorResults);
         grid.appendChild(titleResults);
+        grid.appendChild(authorResults);
         grid.classList.add("grid");
         results.appendChild(grid);
-    }
-}
+    } // <--- data loop
+} //<--- nextPicks results
 
     function moreByThisAuthor() {
         results.innerHTML = "";
@@ -269,15 +278,62 @@ function displayNextResults(data) {
     } //<--- moreByThisAuthor
 
     function displayAuthorResult(data) {
-        console.log("whatever")
         for(let i = 1; i < 10; i++) {
+
             let grid = document.createElement("div");
             let titleResults = document.createElement("div");
             titleResults.innerHTML = data.items[i].volumeInfo.title;
+            titleResults.classList.add("titleResults");
             titleResults.classList.add("next");
+            titleResults.addEventListener("click", function(){
+                bookTitle.innerHTML = data.items[i].volumeInfo.title;
+                author.innerHTML = " By: " + data.items[i].volumeInfo.authors;
+                coverImage.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')"
+                moreFrom.innerHTML = "View more from this author";
+                ratingNumber.innerHTML= "Rating: " + data.items[i].volumeInfo.averageRating + "/5 Stars"
+        
+                descriptionText.innerHTML = data.items[i].volumeInfo.description
+                fullDescriptionText = descriptionText.innerHTML
+                descriptionText.innerHTML = descriptionText.innerHTML.slice(0,300);
+    
+    
+                pageCount.innerHTML = "Page Count: " + data.items[i].volumeInfo.pageCount
+                if (data.items[i].saleInfo.listPrice === undefined){
+                    listPrice.innerHTML = "Sale price unavailable."
+                }
+                else{
+                    listPrice.innerHTML = "Price: $" + data.items[i].saleInfo.listPrice.amount
+                }
+    
+                buyLink = data.items[i].saleInfo.buyLink
+                infoLink = data.items[i].volumeInfo.infoLink
+                })
             let authorResults = document.createElement("div");
             authorResults.innerHTML = data.items[i].volumeInfo.authors;
             authorResults.classList.add("next");
+            authorResults.addEventListener("click", function(){
+                bookTitle.innerHTML = data.items[i].volumeInfo.title;
+                author.innerHTML = " By: " + data.items[i].volumeInfo.authors;
+                coverImage.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')"
+                moreFrom.innerHTML = "View more from this author";
+                ratingNumber.innerHTML= "Rating: " + data.items[i].volumeInfo.averageRating + "/5 Stars"
+        
+                descriptionText.innerHTML = data.items[i].volumeInfo.description
+                fullDescriptionText = descriptionText.innerHTML
+                descriptionText.innerHTML = descriptionText.innerHTML.slice(0,300);
+    
+    
+                pageCount.innerHTML = "Page Count: " + data.items[i].volumeInfo.pageCount
+                if (data.items[i].saleInfo.listPrice === undefined){
+                    listPrice.innerHTML = "Sale price unavailable."
+                }
+                else{
+                    listPrice.innerHTML = "Price: $" + data.items[i].saleInfo.listPrice.amount
+                }
+    
+                buyLink = data.items[i].saleInfo.buyLink
+                infoLink = data.items[i].volumeInfo.infoLink
+            })
             let smallThumb = document.createElement("div");
             smallThumb.classList.add("nextImage");
             smallThumb.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')";
@@ -286,15 +342,36 @@ function displayNextResults(data) {
             smallThumb.style.height = "170px";
             smallThumb.style.backgroundSize = "100% 100%";
             smallThumb.style.backgroundRepeat = "no-repeat";
+            smallThumb.addEventListener("click", function(){
+                bookTitle.innerHTML = data.items[i].volumeInfo.title;
+                author.innerHTML = " By: " + data.items[i].volumeInfo.authors;
+                coverImage.style.backgroundImage = "url('" + data.items[i].volumeInfo.imageLinks.thumbnail + "')"
+                moreFrom.innerHTML = "View more from this author";
+                ratingNumber.innerHTML= "Rating: " + data.items[i].volumeInfo.averageRating + "/5 Stars"
+        
+                descriptionText.innerHTML = data.items[i].volumeInfo.description
+                fullDescriptionText = descriptionText.innerHTML
+                descriptionText.innerHTML = descriptionText.innerHTML.slice(0,300);
+    
+    
+                pageCount.innerHTML = "Page Count: " + data.items[i].volumeInfo.pageCount
+                if (data.items[i].saleInfo.listPrice === undefined){
+                    listPrice.innerHTML = "Sale price unavailable."
+                }
+                else{
+                    listPrice.innerHTML = "Price: $" + data.items[i].saleInfo.listPrice.amount
+                }
+    
+                buyLink = data.items[i].saleInfo.buyLink
+                infoLink = data.items[i].volumeInfo.infoLink
+            })
             grid.appendChild(smallThumb);
-            grid.appendChild(authorResults);
             grid.appendChild(titleResults);
+            grid.appendChild(authorResults);
             grid.classList.add("grid");
             results.appendChild(grid);
         }
-    }
-
-//when you click on author:
+    } //<--- moreAuthorResults
 
 
 })
