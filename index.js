@@ -52,7 +52,7 @@ document.querySelector(".custom-select-wrapper").addEventListener("click", funct
     this.querySelector(".dropDown").classList.toggle("open");
 })
 
-
+// drop down select function
 for (const option of document.querySelectorAll(".dropDown-option")) { 
     option.addEventListener("click", function() {
         if (!this.classList.contains("selected")) {
@@ -69,6 +69,7 @@ for (const option of document.querySelectorAll(".dropDown-option")) {
 }
 //end of view dropdown list
 
+//what happens when search icon is clicked, pulls api:
 function searchBooksAPI(){
      // url = selectedDropdownOptionUrl();
 $.ajax({
